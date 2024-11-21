@@ -9,7 +9,7 @@ class Interval:
         if start > end:
             raise ValueError('Неверный интервал')
 
-    def insect_interval(self, other: "self") -> "self":
+    def insect_interval(self, other):
         if not isinstance(other, Interval):
             raise TypeError(f'Интервал должен быть {self.__class__.__name__}')
         if self.start > other.end or self.end < other.start:
@@ -123,13 +123,3 @@ if __name__ == '__main__':
         test_answer = appearance(test['intervals'])
         print(test_answer)
         assert test_answer == test['answer'], f'Error on test case {i}, got {test_answer}, expected {test["answer"]}'
-
-# dt1 = datetime(year=2024, month=1, day=1, hour=19, minute=0, second=0).timestamp()
-# dt2 = datetime(year=2024, month=1, day=1, hour=20, minute=0, second=0).timestamp()
-# tm1 = Interval(dt1, dt2)
-# d3 = datetime(year=2024, month=1, day=1, hour=18, minute=30, second=0).timestamp()
-# d4 = datetime(year=2024, month=1, day=1, hour=19, minute=40, second=0).timestamp()
-# tm2 = Interval(d3, d4)
-#
-# print(datetime.fromtimestamp(tm1.insect_interval(tm2).start))
-# print(datetime.fromtimestamp(tm1.insect_interval(tm2).end))

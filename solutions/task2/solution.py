@@ -7,15 +7,6 @@ import fake_useragent
 import csv
 
 
-TEST_LEN_ANIMALS = {
-    'А': 1287, 'Б': 1753, 'В': 549, 'Г': 1044, 'Д': 800, 'Е': 105, 'Ё': 2,
-    'Ж': 422, 'З': 664, 'И': 366, 'Й': 4, 'К': 2410, 'Л': 732, 'М': 1349,
-    'Н': 495, 'О': 835, 'П': 1858, 'Р': 607, 'С': 1901, 'Т': 1048,
-    'У': 280, 'Ф': 200, 'Х': 296, 'Ц': 240, 'Ч': 727, 'Ш': 289, 'Щ': 160,
-    'Ъ': 0, 'Ы': 0, 'Ь': 0, 'Э': 234, 'Ю': 146, 'Я': 224
-}
-
-
 # CYRILLIC = {chr(i): 0 for i in range(1040, 1072) if chr(i) not in ("Ъ", "Ь", "Й", "Ы")}
 CYRILLIC = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П',
             'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я']
@@ -72,7 +63,7 @@ class WikiParser:
         return self.counter_cyrillic
 
 
-def writer_csv(animals: dict[str, int] = TEST_LEN_ANIMALS):
+def writer_csv(animals: dict[str, int]):
     # Запись в CSV файл
     with open('beasts.csv', mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
