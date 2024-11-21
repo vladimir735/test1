@@ -37,12 +37,17 @@ class Interval:
         if self.start >= other.start and self.end <= other.end:
             return Interval(other.start, other.end)
 
+    def __eq__(self, other):
+        if not isinstance(other, Interval):
+            return NotImplemented
+        return self.start == other.start and self.end == other.end
+
     def __repr__(self):
         return f'{self.__class__.__name__}({self.start}, {self.end})'
 
 
 class Unit:
-    def __init__(self, timestamps: list[int]):
+    def __init__(self, timestamps: list[int | float]):
         self.intervals: list = [Interval(timestamps[i], timestamps[i + 1]) for i in range(0, len(timestamps), 2)]
 
     def remake(self) -> list[int]:
